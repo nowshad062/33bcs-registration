@@ -23,14 +23,12 @@
 	<link th:href="@{css/style.css}" rel="stylesheet" />
 </head>
 
-<body class="gray-bg">
+<body>
 
   <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
-      
-      <hr />
 
-      <h4>New User Registration</h4>
+      <hr/><h4>New User Registration</h4><hr/>
 
       <form autocomplete="off" action="#" th:action="@{/register}"
         th:object="${user}" method="post" class="m-t" role="form"
@@ -45,13 +43,26 @@
           th:text="${alreadyRegisteredMessage}"></div>
 
 
-        <div th:if="${#fields.hasErrors('firstName')}"
-          th:errors="*{firstName}"
+        <div th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}"
           class="validation-message alert alert-danger" role="alert"></div>
 
-        <div th:if="${#fields.hasErrors('lastName')}"
-          th:errors="*{lastName}"
-          class="validation-message alert alert-danger" role="alert"></div>
+        <div th:if="${#fields.hasErrors('nameBangla')}"
+             th:errors="*{nameBangla}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+<!--        <div th:if="${#fields.hasErrors('occupation')}"-->
+<!--             th:errors="*{occupation}"-->
+<!--             class="validation-message alert alert-danger" role="alert"></div>-->
+
+
+        <div th:if="${#fields.hasErrors('payscale')}"
+             th:errors="*{payscale}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+        <div th:if="${#fields.hasErrors('currentWorkplace')}"
+             th:errors="*{currentWorkplace}"
+             class="validation-message alert alert-danger" role="alert"></div>
 
 
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
@@ -63,27 +74,110 @@
 
 
         <div class="form-group input-group has-feedback">
-          <label th:if="${#fields.hasErrors('firstName')}"
-            th:errors="*{firstName}" class="validation-message"></label>
+          <label th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}" class="validation-message"></label>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
-          
-          <input type="text" th:field="*{firstName}"
+
+          <input type="text" th:field="*{name}"
             placeholder="First Name" class="form-control" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
         </div>
 
         <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('nameBangla')}"
+                 th:errors="*{nameBangla}" class="validation-message"></label>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
-          <input type="text" th:field="*{lastName}"
-            placeholder="Last Name" class="form-control" required />
+
+          <input type="text" th:field="*{nameBangla}"
+                 placeholder="Name in Bangla" class="form-control" required />
           <span class="glyphicon form-control-feedback"
-            aria-hidden="true"></span>
+                aria-hidden="true"></span>
         </div>
+
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{occupation}" class="form-control" required>
+            <option th:value="'M'">Emergency Medical officer</option>
+            <option th:value="'F'">Doctor</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('payscale')}"
+                 th:errors="*{payscale}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{payscale}"
+                 placeholder="payscale" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('currentWorkplace')}"
+                 th:errors="*{currentWorkplace}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{currentWorkplace}"
+                 placeholder="currentWorkplace" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <hr/><h4>Personal Information</h4><hr/>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('fatherName')}"
+                 th:errors="*{fatherName}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{fatherName}"
+                 placeholder="fatherName" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('motherName')}"
+                 th:errors="*{motherName}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{motherName}"
+                 placeholder="motherName" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('presentAddress')}"
+                 th:errors="*{presentAddress}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{presentAddress}"
+                 placeholder="presentAddress" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+
 
         <div class="form-group input-group has-feedback">
           <span class="input-group-addon">
