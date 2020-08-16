@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +29,7 @@
   <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
 
-      <hr/><h4>New User Registration</h4><hr/>
+      <hr/><h4>Basic Information</h4><hr/>
 
       <form autocomplete="off" action="#" th:action="@{/register}"
         th:object="${user}" method="post" class="m-t" role="form"
@@ -51,11 +52,6 @@
              th:errors="*{nameBangla}"
              class="validation-message alert alert-danger" role="alert"></div>
 
-<!--        <div th:if="${#fields.hasErrors('occupation')}"-->
-<!--             th:errors="*{occupation}"-->
-<!--             class="validation-message alert alert-danger" role="alert"></div>-->
-
-
         <div th:if="${#fields.hasErrors('payscale')}"
              th:errors="*{payscale}"
              class="validation-message alert alert-danger" role="alert"></div>
@@ -64,7 +60,6 @@
              th:errors="*{currentWorkplace}"
              class="validation-message alert alert-danger" role="alert"></div>
 
-
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
           class="validation-message alert alert-danger" role="alert"></div>
 
@@ -72,7 +67,7 @@
           th:errors="*{password}"
           class="validation-message alert alert-danger" role="alert"></div>
 
-
+<!-------------------------------ALl inputs Starts here-------------------------------------->
         <div class="form-group input-group has-feedback">
           <label th:if="${#fields.hasErrors('name')}"
             th:errors="*{name}" class="validation-message"></label>
@@ -99,29 +94,19 @@
                 aria-hidden="true"></span>
         </div>
 
-
         <div class="form-group input-group has-feedback">
-          <select th:field="*{occupation}" class="form-control" required>
-            <option th:value="'M'">Emergency Medical officer</option>
-            <option th:value="'F'">Doctor</option>
-          </select>
-          <span class="glyphicon form-control-feedback"
-                aria-hidden="true"></span>
-
-        </div>
-
-        <div class="form-group input-group has-feedback">
-          <label th:if="${#fields.hasErrors('payscale')}"
-                 th:errors="*{payscale}" class="validation-message"></label>
+          <label th:if="${#fields.hasErrors('occupation')}"
+                 th:errors="*{occupation}" class="validation-message"></label>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
 
-          <input type="text" th:field="*{payscale}"
-                 placeholder="payscale" class="form-control" required />
+          <input type="text" th:field="*{occupation}"
+                 placeholder="Current Designation" class="form-control" required />
           <span class="glyphicon form-control-feedback"
                 aria-hidden="true"></span>
         </div>
+
 
         <div class="form-group input-group has-feedback">
           <label th:if="${#fields.hasErrors('currentWorkplace')}"
@@ -131,10 +116,35 @@
           </span>
 
           <input type="text" th:field="*{currentWorkplace}"
-                 placeholder="currentWorkplace" class="form-control" required />
+                 placeholder="Current Workplace" class="form-control" required />
           <span class="glyphicon form-control-feedback"
                 aria-hidden="true"></span>
         </div>
+
+        <div class="form-group input-group has-feedback">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-envelope"></span>
+          </span>
+          <input type="email" th:field="*{email}"
+                 placeholder="Email Address" class="form-control"
+                 data-error="This email address is invalid" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+
+        </div>
+
+
+        <div class="form-group input-group has-feedback">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-phone"></span>
+          </span>
+          <input type="tel" th:field="*{phone}"
+                 placeholder="Phone Number" class="form-control"
+                 data-error="This Phone No is invalid" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
 
         <hr/><h4>Personal Information</h4><hr/>
 
@@ -146,7 +156,7 @@
           </span>
 
           <input type="text" th:field="*{fatherName}"
-                 placeholder="fatherName" class="form-control" required />
+                 placeholder="Father Name" class="form-control" required />
           <span class="glyphicon form-control-feedback"
                 aria-hidden="true"></span>
         </div>
@@ -159,7 +169,7 @@
           </span>
 
           <input type="text" th:field="*{motherName}"
-                 placeholder="motherName" class="form-control" required />
+                 placeholder="Mother Name" class="form-control" required />
           <span class="glyphicon form-control-feedback"
                 aria-hidden="true"></span>
         </div>
@@ -172,25 +182,348 @@
           </span>
 
           <input type="text" th:field="*{presentAddress}"
-                 placeholder="presentAddress" class="form-control" required />
+                 placeholder="Present Address" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('permanentAddress')}"
+                 th:errors="*{permanentAddress}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{permanentAddress}"
+                 placeholder="Permanent Address" class="form-control" required />
           <span class="glyphicon form-control-feedback"
                 aria-hidden="true"></span>
         </div>
 
 
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{sex}" class="form-control" required>
+            <option th:value="''">Select Gender</option>
+            <option th:value="'M'">Male</option>
+            <option th:value="'F'">Female</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{mStatus}" class="form-control" required>
+            <option th:value="''">Select Marital Status</option>
+            <option th:value="'Single'">Single</option>
+            <option th:value="'Married'">Married</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{religion}" class="form-control" required>
+            <option th:value="''">Select Religion</option>
+            <option th:value="'Islam'">Islam</option>
+            <option th:value="'Hinduism'">Hinduism</option>
+            <option th:value="'Buddhism'">Buddhism</option>
+            <option th:value="'Christian'">Christian</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+
+        <div class="form-group input-group date" data-provide="datepicker">
+          <div class="input-group-addon"><span><label>Date of Birth: </label></span></div>
+          <input type="date" th:field="*{dob}" placeholder="Date of Birth" class="form-control" required >
+        </div>
+
+        <div class="form-group input-group date" data-provide="datepicker">
+          <div class="input-group-addon"><span><label>PRL Date: </label></span></div>
+          <input type="date" th:field="*{prlDate}" placeholder="Date of Birth" class="form-control" required >
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('NID')}"
+                 th:errors="*{NID}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{NID}"
+                 placeholder="National ID" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('TIN')}"
+                 th:errors="*{TIN}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{TIN}"
+                 placeholder="Tax Identification No" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+
+        <hr/><h4>HRIS Information</h4><hr/>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{postingStatus}" class="form-control" required>
+            <option th:value="''">Select Posting Status</option>
+            <option th:value="'Posted'">Posted</option>
+            <option th:value="'Not Posted'">Not Posted</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{postedAs}" class="form-control" required>
+            <option th:value="''">Select Posted As</option>
+            <option th:value="'For the Post'">For the Post</option>
+            <option th:value="'Against The Post'">Against The Post</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('HRISId')}"
+                 th:errors="*{HRISId}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{HRISId}"
+                 placeholder="HRIS ID" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('postId')}"
+                 th:errors="*{postId}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{postId}"
+                 placeholder="Post ID" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
 
         <div class="form-group input-group has-feedback">
           <span class="input-group-addon">
-            <span class="glyphicon glyphicon-envelope"></span>
+            <span class="glyphicon glyphicon-user"></span>
           </span>
-          <input type="email" th:field="*{email}"
-            placeholder="Email Address" class="form-control"
-            data-error="This email address is invalid" required />
+          <input type="text" th:field="*{codeNo}"
+                 placeholder="Code No" class="form-control" required />
           <span class="glyphicon form-control-feedback"
-            aria-hidden="true"></span>
+                aria-hidden="true"></span>
+        </div>
+
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('bcsBatchNo')}"
+                 th:errors="*{bcsBatchNo}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{bcsBatchNo}"
+                 placeholder="BCS Batch No" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{noStudyDept}" class="form-control" required>
+            <option th:value="''">No Of Study deputation</option>
+            <option th:value="'1'">1</option>
+            <option th:value="'2'">2</option>
+            <option th:value="'3'">3</option>
+            <option th:value="'4'">4</option>
+            <option th:value="'5'">5</option>
+            <option th:value="'6'">6</option>
+            <option th:value="'7'">7</option>
+            <option th:value="'8'">8</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('originalDesignation')}"
+                 th:errors="*{originalDesignation}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{originalDesignation}"
+                 placeholder="Originl Designation" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('acrAvailability')}"
+                 th:errors="*{acrAvailability}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{acrAvailability}"
+                 placeholder="List ACR Availability Years" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <hr/><h4>Other Information</h4><hr/>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('profDiscipline')}"
+                 th:errors="*{profDiscipline}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{profDiscipline}"
+                 placeholder="Professional Discipline" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('profCategory')}"
+                 th:errors="*{profCategory}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{profCategory}"
+                 placeholder="Professional Category" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('jobStatus')}"
+                 th:errors="*{jobStatus}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{jobStatus}"
+                 placeholder="Job Status" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{tribe}" class="form-control" required>
+            <option th:value="''">Select Your Tribe</option>
+            <option th:value="'Not Tribal'">Not Tribal</option>
+            <option th:value="'Chakma'">Chakma</option>
+            <option th:value="'Marma'">Marma</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+
+        <div class="form-group input-group has-feedback">
+          <div class="input-group-addon"><span><label>Is Freedom Fighter: </label></span></div>
+            <input type="radio" id="option1" name="option1" class="custom-control-input" value="Yes" th:field="*{isFreedomFighter}">
+            <label class="custom-control-label" for="option1">Yes</label>
+            <input type="radio" id="option2" name="option2" class="custom-control-input" value="No" th:field="*{isFreedomFighter}">
+            <label class="custom-control-label" for="option2">No</label>
 
         </div>
-        
+
+
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{isFreedomFighter}" class="form-control" required>
+            <option th:value="'1'">Yes</option>
+            <option th:value="'0'">No</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{isLiveGovtQuarter}" class="form-control" required>
+            <option th:value="'1'">Yes</option>
+            <option th:value="'0'">No</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group date" data-provide="datepicker">
+          <input type="date" th:field="*{jdHealthService}" placeholder="Joining Date (Govt Health Service)" class="form-control" required >
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+
+        <div class="form-group input-group date" data-provide="datepicker">
+          <input type="date" th:field="*{jdCurrentPlace}" placeholder="Joining Date (Current Place)" class="form-control" required >
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+
+        <div class="form-group input-group date" data-provide="datepicker">
+          <input type="date" th:field="*{jdCurrentDesignation}" placeholder="Joining Date (Current Designation)" class="form-control" required >
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <select th:field="*{payscale}" class="form-control" required>
+            <option th:value="'1'">1</option>
+            <option th:value="'2'">2</option>
+            <option th:value="'3'">3</option>
+            <option th:value="'4'">4</option>
+            <option th:value="'5'">5</option>
+            <option th:value="'6'">6</option>
+            <option th:value="'7'">7</option>
+            <option th:value="'8'">8</option>
+            <option th:value="'9'">9</option>
+            <option th:value="'10'">10</option>
+            <option th:value="'11'">11</option>
+            <option th:value="'12'">12</option>
+          </select>
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('currentBasicPay')}"
+                 th:errors="*{currentBasicPay}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{currentBasicPay}"
+                 placeholder="Current Basic Pay" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <hr/><h4>Information on Last Promotion</h4><hr/>
+
 
         <button type="submit"
           class="btn btn-primary block full-width m-b">Register</button>
@@ -201,6 +534,22 @@
       </p>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>Upload Additional Files</h2>
+      <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+      <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="file" name="file" class="form-control-file" >
+        </div>
+        <button type="submit" class="btn btn-primary">Upload File</button>
+      </form>
+    </div>
+  </div>
+
+
+
 
 
   <!-- jQuery-->
